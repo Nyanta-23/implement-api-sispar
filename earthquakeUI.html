@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Gempa</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">Update Gempa</h1>
+
+    <h2 style="text-align: center">Map Gempa</h2>
+    <img src="" alt="" id="gambar" />
+    <h3>Jam: <span id="jam"></span></h3>
+    <h3>Tanggal: <span id="tgl"></span></h3>
+    <h3>Lintang: <span id="lintang"></span></h3>
+    <h3>Bujur: <span id="bujur"></span></h3>
+    <h3>Frekuensi gempa: <span id="mag"></span> Mag</h3>
+    <h3>Kedalaman: <span id="kedalaman"></span></h3>
+    <h3>Wilayah: <span id="wilayah"></span></h3>
+    <h3>Potensi: <span id="potensi"></span></h3>
+    <h3>Dirasakan: <span id="dirasakan"></span></h3>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+      axios
+        .get("http://localhost:3000/gempa")
+        .then((response) => {
+          const {gempa} = response.data;
+          console.log(gempa);
+          document.getElementById("jam").textContent = gempa.Jam;
+          document.getElementById("tgl").textContent = gempa.Tanggal;
+          document.getElementById("lintang").textContent = gempa.Lintang;
+          document.getElementById("bujur").textContent = gempa.Bujur;
+          document.getElementById("mag").textContent = gempa.Magnitude;
+          document.getElementById("kedalaman").textContent = gempa.Kedalaman;
+          document.getElementById("wilayah").textContent = gempa.Wilayah;
+          document.getElementById("potensi").textContent = gempa.Potensi;
+          document.getElementById("dirasakan").textContent = gempa.Dirasakan;
+          
+          document.getElementById("gambar").src = gempa.Shakemap;
+        })
+        .catch((error) => console.error("Terjadi kesalahan:", error));
+    </script>
+  </body>
+</html>
