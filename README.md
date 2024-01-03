@@ -10,7 +10,8 @@ here for install nodemon
 
 # How to run?
 
-Type #npm run dev 
+Type 
+# npm run dev 
 or 
-#npm start
+# npm start
 on command line
